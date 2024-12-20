@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-crud-service
+  labels:
+    app: crud-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: crud-app
+  template:
+    metadata:
+      labels:
+        app: crud-app
+    spec:
+      containers:
+        - name: nodejs-crud-service
+          image: 381492076781.dkr.ecr.ap-southeast-1.amazonaws.com/nodejs-crud-service:latest
+
+          ports:
+            - containerPort: 3000
